@@ -64,7 +64,7 @@ def main():
     width = 0.2                 # Set the bar width
 
     # Add a blank label to shift the bars right
-    two_dice_totals = [" "] + two_dice_totals
+    two_dice_totals = [" "] + list(two_dice_totals)
 
     # Create the bars.  Prepend a zero value to the probability list
     # to go with the blank label.

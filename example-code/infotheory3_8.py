@@ -54,31 +54,31 @@ def main():
     # The entropy of characters
     model = markov_model(chars(filename), model_order)
 
-    print "Letter Entropy:", entropy_rate(model), ' bits/letter.'
-    print 'Model order = ', model_order
+    print("Letter Entropy:", entropy_rate(model), ' bits/letter.')
+    print('Model order = ', model_order)
 
     #
     # Output the a random sample text generated from the input sample
     # Format it as a block of chars width 70 (default for
     # textwrap.fill()
-    print 'Model letter output:'
-    print textwrap.fill("".join(generate(model, sample_size)))
+    print('Model letter output:')
+    print(textwrap.fill("".join(generate(model, sample_size))))
 
     #
     # The entropy of words
     #
     model = markov_model(words(filename), model_order)
 
-    print "\n\n"
-    print "Word Entropy = :", entropy_rate(model), ' bits/word.'
-    print "Model order", model_order
+    print("\n\n")
+    print("Word Entropy = :", entropy_rate(model), ' bits/word.')
+    print("Model order", model_order)
 
     #
     # Output the a random sample text generated from the input sample
     # Format it as a block of chars width 70 (default for
     # textwrap.fill()
-    print 'Model word output:'
-    print textwrap.fill(" ".join(generate(model, 100)))
+    print('Model word output:')
+    print(textwrap.fill(" ".join(generate(model, 100))))
 
 def markov_model(stream, model_order):
     """Function counts the frequency of all distinct strings in the stream
@@ -267,7 +267,7 @@ def pick(counter):
     # Calc size of counter - the total of the frequencies
     size = sum(counter.values())
     if size <= 0:
-        print counter
+        print(counter)
         raise ValueError("No frequency values in passed counter")
 
     # Pick a random element as a target

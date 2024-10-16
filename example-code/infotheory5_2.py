@@ -21,7 +21,7 @@ As the data is generated randomly, there may be some variation in the calculated
 import math
 import numpy as np
 from matplotlib import pyplot
-import matplotlib.mlab as mlab
+from scipy.stats import norm
 import information_theory as it
 
 PI = 3.14159265359
@@ -75,7 +75,7 @@ def main():
 
         # Set the bin edges
         binedges = [x * binwidth - sdrange for x in range(bins_display + 1)]
-        pyplot.hist(xtrunc, binedges, normed=1, histtype='bar')
+        pyplot.hist(xtrunc, binedges, density=1, histtype='bar')
 
         pyplot.title("Bin width = %s\n\nH(X) = %s bits, Hdiff(X) = %s bits" % (binwidth, HX,HXdiff))
         pyplot.axis('off')
@@ -84,7 +84,7 @@ def main():
     pyplot.subplot(2, 2, figure + 1)
     pyplot.title("PDF Hdiff(X) = %s bits," % (analytic_hx,))
     x = np.linspace(-3.5, 3.5, 100)
-    pyplot.plot(x, mlab.normpdf(x, mean, sd))
+    pyplot.plot(x, norm.pdf(x, mean, sd))
     pyplot.axis('off')
     pyplot.show()
 
