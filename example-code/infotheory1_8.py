@@ -16,6 +16,16 @@ this convolved image"""
 from matplotlib import pyplot
 from PIL import Image
 import information_theory as it
+from math import log
+
+def upper_bound_entropy(frequencies):
+    h = 0
+    total = sum(frequencies)
+    for frequency in frequencies:
+        p = frequency / total
+        if p > 0:
+            h += - p * log(p, 2)
+    print(f'Entropy: {h}')
 
 def main():
     """Main function for Figure 1.8b example"""
@@ -58,6 +68,8 @@ def main():
     pyplot.title("Convolved Image")
     pyplot.imshow(image, cmap='gray')
     pyplot.axis('off')
+
+    upper_bound_entropy(frequencies)
 
     # Use these frequencies to calculate an entropy
     HX = it.entropy_from_frequencies(frequencies)
